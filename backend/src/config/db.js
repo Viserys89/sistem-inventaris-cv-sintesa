@@ -1,0 +1,24 @@
+import pg from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const { Pool } = pg;
+
+const pool = new Pool({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+});
+
+pool.on('error', (err) => {
+    console.error('Unexpected database error:', err);
+});
+
+export default pool;
+
+// pg: Menghubungkan Node.js dengan PostgreSQL.
+// dotenv: Membaca konfigurasi dari file .env.
+// Pool: Mengelola koneksi database agar dapat digunakan berulang kali.

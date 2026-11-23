@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+:root {
+    font-family: 'Inter', sans-serif;
+
+    color: #142D50;
+    background: #F4F7FA;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+
+    --color-navy: #142D50;
+    --color-blue: #2463A6;
+    --color-sky: #75B9E7;
+    --color-ice: #EAF5FC;
+    --color-white: #FFFFFF;
+    --color-gray: #F4F7FA;
+
+    --radius-card: 16px;
+    --shadow-soft: 0 4px 18px rgba(20, 45, 80, 0.035);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 12% 20%,
+            rgba(117, 185, 231, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 88% 85%,
+            rgba(117, 185, 231, 0.12),
+            transparent 30%
+        ),
+        #F4F7FA;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Menjaga posisi konten agar tidak bergeser karena scrollbar */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Animasi dasar halaman */
+.page-enter {
+  animation: pageEnter 250ms ease-out;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Menghormati preferensi reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Animasi masuk modal */
+.modal-backdrop-enter {
+  animation: modalBackdropIn 200ms ease-out both;
+}
+
+.modal-content-enter {
+  animation: modalContentIn 220ms ease-out both;
+}
+
+/* Animasi keluar modal */
+.modal-backdrop-exit {
+  animation: modalBackdropOut 180ms ease-in both;
+}
+
+.modal-content-exit {
+  animation: modalContentOut 180ms ease-in both;
+}
+
+@keyframes modalBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalBackdropOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modalContentOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(5px) scale(0.98);
+  }
+}
